@@ -1,35 +1,48 @@
-<p id="notice"><%= notice %></p>
+<head>
+      <title> Doors </title>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">    
+    </head>
+    <body>
+        <h2 style="color: #448aff;text-align: center;"> Door Table </h2>
+<hr>
+  <table class="table table-striped">
+    <div class="dropdown">     
+     <a class="btn-top" style="margin-right: 15px;" class="btn btn-primary btn-success pull-right"> <span class="glyphicon glyphicon-plus"> </span>  <%= link_to 'New Door', new_door_path %></a>
+  </div>
+</div>
 
-<h1>Doors</h1>
-
-<table>
+<table align='center'>
   <thead>
-    <tr>
-      <th>Initials</th>
-      <th>Description</th>
-      <th>Phone</th>
-      <th>Number</th>
-      <th>Schedule</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tr class="row-name" align='center'>
+           <th style="width:12%">Initials</th>
+           <th style="width:12%">Description </th>
+           <th>Phone</th>
+           <th>Number</th>
+           <th>Schedule</th>
+           <th>Settings</th>
+        </tr>
+     </thead>    
+<tbody>
 
-  <tbody>
-    <% @doors.each do |door| %>
-      <tr>
+ <% @doors.each do |door| %> 
+ <tr class="row-content">
         <td><%= door.initials %></td>
         <td><%= door.description %></td>
         <td><%= door.phone %></td>
         <td><%= door.number %></td>
         <td><%= door.schedule %></td>
-        <td><%= link_to 'Show', door %></td>
-        <td><%= link_to 'Edit', edit_door_path(door) %></td>
-        <td><%= link_to 'Destroy', door, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+           <td>
+               <%= link_to edit_door_path(door), class: "btn btn-info edit", remote: true do %>
+                        <i class="fa fa-pencil-square-o"></i>
+                <% end %> 
+                <%= link_to  door, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger edit", remote: true do %>
+                        <i class="fa fa-pencil-square-o"></i>
+                <% end %> 
+           </td>
+        </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Door', new_door_path %>
+

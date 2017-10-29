@@ -10,18 +10,36 @@
       </ul>
     </div>
   <% end %>
-<div class="container">
-  <div class="field">
-    <%= form.label :initials %>
-    <%= form.text_field :initials, id: :door_initials %>
-  </div>
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.number_field :number, id: :door_number %>
-  </div>
 
-  <div class="actions">
-     <%= form.submit class: "btn btn-primary" %>
+<div class="container">
+  <div class="row-fluid">
+      <form class="form-horizontal">
+        <fieldset>
+          <div id="legend">
+            <legend class="">New Door</legend>
+          </div>
+
+
+
+
+ <!-- initials  -->
+   <div class="control-group">
+            
+          <%= form.label :initials %>
+          <%= form.text_field :initials, id: :door_initials, placeholder: 'NTIC' %>
+   </div>
+     
+   <div class="control-group">
+
+    <%= form.label :number %>
+    <%= form.number_field :number, id: :door_number, placeholder: '16'%>
   </div>
+<br>
+  <div class="actions">
+     <%= form.submit class: "btn btn-success" %>
+  </div>
+          </fieldset>
+      </form>
+ </div>
 </div>
 <% end %>
