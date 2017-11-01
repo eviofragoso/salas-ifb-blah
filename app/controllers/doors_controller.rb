@@ -15,6 +15,7 @@ class DoorsController < ApplicationController
   # GET /doors/new
   def new
     @door = Door.new
+    @door.people.build
   end
 
   # GET /doors/1/edit
@@ -48,6 +49,8 @@ class DoorsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @door.errors, status: :unprocessable_entity }
       end
+
+
     end
   end
 
@@ -69,6 +72,6 @@ class DoorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def door_params
-      params.require(:door).permit(:initials, :description, :phone, :number, :schedule)
+      params.require(:door).permit(:initials, :description, :phone, :number, :schedule, people_attributes: [:name, :email, :phone, :office])
     end
 end

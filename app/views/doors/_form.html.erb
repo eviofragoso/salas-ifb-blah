@@ -34,6 +34,12 @@
     <%= form.label :number %>
     <%= form.number_field :number, id: :door_number, placeholder: '16'%>
   </div>
+
+  <div class="control-group">
+    <%=form.fields_for @people do |builder| %>
+    <%= render 'people_fields', :f => builder%>
+    <%end%>
+  </div>
 <br>
   <div class="actions">
      <%= form.submit class: "btn btn-success" %>
