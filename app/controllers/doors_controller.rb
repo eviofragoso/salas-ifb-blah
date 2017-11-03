@@ -10,6 +10,7 @@ class DoorsController < ApplicationController
   # GET /doors/1
   # GET /doors/1.json
   def show
+    @door = Door.find(params[:id])
   end
 
   # GET /doors/new

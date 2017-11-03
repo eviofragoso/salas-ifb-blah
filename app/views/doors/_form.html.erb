@@ -1,51 +1,86 @@
 <%= form_with(model: door, local: true) do |form| %>
   <% if door.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(door.errors.count, "error") %> prohibited this door from being saved:</h2>
+      <h2>
+        <%= pluralize(door.errors.count, "error") %> prohibited this door from being saved:</h2>
 
       <ul>
-      <% door.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% door.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-<div class="container">
-  <div class="row-fluid">
-      <form class="form-horizontal">
-        <fieldset>
-          <div id="legend">
-            <legend class="">New Door</legend>
-          </div>
-
-
+      <div class="container">
+        <div class="row-fluid">
+          <form class="form-horizontal">
+            <fieldset>
+              <div id="legend">
+                <legend class="">New Door</legend>
+              </div>
 
 
- <!-- initials  -->
-   <div class="control-group">
-            
-          <%= form.label :initials %>
-          <%= form.text_field :initials, id: :door_initials, placeholder: 'NTIC' %>
-   </div>
-     
-   <div class="control-group">
 
-    <%= form.label :number %>
-    <%= form.number_field :number, id: :door_number, placeholder: '16'%>
-  </div>
 
-  <div class="control-group">
-    <%=form.fields_for @people do |builder| %>
-    <%= render 'people_fields', :f => builder%>
-    <%end%>
-  </div>
-<br>
-  <div class="actions">
-     <%= form.submit class: "btn btn-success" %>
-  </div>
-          </fieldset>
-      </form>
- </div>
-</div>
-<% end %>
+              <!-- initials  -->
+              <div class="control-group">
+
+                <%= form.label :initials %>
+                  <%= form.text_field :initials, id: :door_initials, placeholder: 'NTIC' %>
+
+              </div>
+
+              <div class="control-group">
+
+                <%= form.label :description %>
+                  <%= form.text_field :description, id: :door_description, placeholder: 'NTIC' %>
+
+              </div>
+              <div class="control-group">
+
+                <%= form.label :phone %>
+                  <%= form.text_field :phone, id: :door_phone, placeholder: 'NTIC' %>
+
+              </div>
+              <div class="control-group">
+
+                <%= form.label :initials %>
+                  <%= form.text_field :initials, id: :door_initials, placeholder: 'NTIC' %>
+
+              </div>
+
+              <div class="control-group">
+
+                <%= form.label :number %>
+                  <%= form.number_field :number, id: :door_number, placeholder: '16'%>
+              </div>
+              
+              
+
+              <div class="control-group">
+
+                <%= form.label :schedule %>
+                  <%= form.text_field :schedule, id: :door_schedule, placeholder: '16'%>
+              </div>
+
+              <div class="person-container">
+                <%= image_tag 'img_avatar.png', size:"96"%>
+              </div>
+
+              <div class="control-group">
+                <%=form.fields_for :person do |builder| %>
+                  <%= render 'people_fields', :f => builder%>
+                    <%end%>
+              </div>
+              <br>
+              <div class="actions">
+                <%= form.submit class: "btn btn-success" %>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <% end %>
